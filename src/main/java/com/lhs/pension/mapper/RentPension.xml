@@ -22,35 +22,41 @@
 	</resultMap>
 
 	<insert id="insert">
-		INSERT INTO RENT_PENSION(no, name, category, price,
-		usepeople, company, img, info)
-		VALUES(RENTCAR_SEQ.NEXTVAL, #{name},
-		#{company}, #{img}, #{info})
+		INSERT INTO RENT_PENSION(no, name, price, img, info, minp, maxp, region, spa, full, pool, toilet, room, breakfast)
+		VALUES(RENT_PENSION_SEQ.NEXTVAL, #{name},#{price}, #{img}, #{info},#{minp},#{maxp},#{region},#{spa},#{full},#{pool},#{toilet},#{room},#{breakfast})
 	</insert>
 	
 	<select id="selectAll" resultMap="result">
-		SELECT no, name, category, price, usepeople, company, img, info FROM RENT_PENSION
+		SELECT no, name, price, img, info, minp, maxp, region, spa, full, pool, toilet, room, breakfast FROM RENT_PENSION
 	</select>
 	
-	<select id="selectVo" resultType="com.pgy.rentcar.dto.RentCar_Dto">
-		SELECT no, name, category, price, usepeople, company, img, info FROM RENT_PENSION
+	<select id="selectVo" resultType="com.lhs.pension.dto.RentPension">
+		SELECT no, name, price, img, info, minp, maxp, region, spa, full, pool, toilet, room, breakfast FROM RENT_PENSION
 		WHERE NO = #{no}
 	</select>
 	
+	<!--
 	<select id="selectKey" resultMap="result">
-		SELECT no, name, category, price, usepeople, company, img, info FROM RENT_PENSION
+		SELECT no, name, price, img, info, minp, maxp, region, spa, full, pool, toilet, room, breakfast FROM RENT_PENSION
 		WHERE CATEGORY = #{category}
 	</select>
-	
+	  -->
+	  
 	<update id="update">
 		UPDATE RENT_PENSION SET
 		NAME = #{name},
-		CATEGORY = #{category},
 		PRICE = #{price},
-		USEPEOPLE = #{usepeople},
-		COMPANY = #{company},
 		IMG = #{img},
-		INFO = #{info}
+		INFO = #{info},
+		minp = #{minp},
+		maxp = #{maxp},
+		region = #{region},
+		spa = #{spa},
+		full = #{full},
+		pool = #{pool},
+		toilet = #{toilet},
+		room = #{room},
+		breakfast = #{breakfast},
 		WHERE NO = #{no}
 	</update>
 	

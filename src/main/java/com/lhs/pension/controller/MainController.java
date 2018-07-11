@@ -56,19 +56,17 @@ private SqlSession sqlSession;
 	public String loginProc(HttpServletRequest request, Model model,HttpSession session) throws UnsupportedEncodingException {
 		
 		request.setCharacterEncoding("UTF-8");
-		
 		String id = request.getParameter("id");
 		String pass = request.getParameter("pass");
 		
 		try{
-			
 		PMemberIDao dao = sqlSession.getMapper(PMemberIDao.class);
 		Map<String,String> map = new HashMap();
 		map.put("id",id);
 		map.put("pass",pass);
 		
 		int loginOk = dao.login(map);
-		if(loginOk==1){
+		if(loginOk>0){
 			session.setAttribute("id", id);
 			return "Main?center=CarReserveMain.jsp";
 		}else{
@@ -81,4 +79,7 @@ private SqlSession sqlSession;
 		
 		return "LoginProc";
 	}
+	
+	
+	
 }

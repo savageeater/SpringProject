@@ -9,6 +9,4 @@ public class ReserveView {
 	private String rday;
 	private String memid;
 	private String breakfast;
-	
-
 }
