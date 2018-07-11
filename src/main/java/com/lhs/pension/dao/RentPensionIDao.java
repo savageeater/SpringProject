@@ -3,9 +3,9 @@ package com.lhs.pension.dao;
 import java.sql.SQLException;
 import java.util.List;
 
-import com.lhs.dto.RentPension;
+import com.lhs.pension.dto.RentPension;
 
-public interface RentPensionIDao {
+public interface RentPensionIDao<T,K> {
 	// �ش�Ǵ� Ű�� �ڷ� ���翩��(�μ�Ʈ�ϰų� ����Ʈ, ������Ʈ�Ҷ� ��������) 
 	public boolean isExist(K key) throws SQLException;//��
 	// ���ο� �ڷḦ ��� �ִ� �۾��� �ϰ� �Է¿��� ���� 

@@ -4,7 +4,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.lhs.dto.PBoard;
+import com.lhs.pension.dto.PBoard;
 
 
 public interface PBoardIDao {
@@ -29,4 +29,5 @@ public interface PBoardIDao {
 	public int getAllCount() throws SQLException;
 	public List<PBoard> selectPart(int key1, int key2) throws SQLException;
 	public List<PBoard> selectPart2(int key1, int key2) throws SQLException;
+	
 }

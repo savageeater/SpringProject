@@ -1,4 +1,4 @@
-package com.lhs.dto;
+package com.lhs.pension.dto;
 
 public class PMember {
 	private String id;
@@ -7,6 +7,7 @@ public class PMember {
 	private String tel;
 	private int age;
 	private String region;
+	
 	public String getId() {
 		return id;
 	}

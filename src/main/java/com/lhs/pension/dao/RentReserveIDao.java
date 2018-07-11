@@ -3,7 +3,8 @@ package com.lhs.pension.dao;
 import java.sql.SQLException;
 import java.util.List;
 
-import com.lhs.dto.RentReserve;
+import com.lhs.pension.dto.RentReserve;
+import com.lhs.pension.dto.ReserveView;
 
 
 

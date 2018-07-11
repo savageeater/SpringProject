@@ -2,42 +2,48 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.pgy.rentcar.dao.RentCar_IDao">
+<mapper namespace="com.lhs.pension.dao.RentPensionIDao">
 
-	<resultMap type="com.pgy.rentcar.dto.RentCar_Dto" id="result">
+	<resultMap type="com.lhs.pension.dto.RentPension" id="result">
 		<result column="NO" property="no" />
 		<result column="NAME" property="name" />
-		<result column="CATEGORY" property="category" />
 		<result column="PRICE" property="price" />
-		<result column="USEPEOPLE" property="usepeople" />
-		<result column="COMPANY" property="company" />
 		<result column="IMG" property="img" />
 		<result column="INFO" property="info" />
+		<result column="MINP" property="minp" />
+		<result column="MAXP" property="maxp" />
+		<result column="REGION" property="region" />
+		<result column="SPA" property="spa" />
+		<result column="FULL" property="full" />
+		<result column="POOL" property="pool" />
+		<result column="TOILET" property="toilet" />
+		<result column="ROOM" property="room" />
+		<result column="BREAKFAST" property="breakfast" />
 	</resultMap>
 
 	<insert id="insert">
-		INSERT INTO RENTCAR(no, name, category, price,
+		INSERT INTO RENT_PENSION(no, name, category, price,
 		usepeople, company, img, info)
 		VALUES(RENTCAR_SEQ.NEXTVAL, #{name},
-		#{category}, #{price}, #{usepeople}, #{company}, #{img}, #{info})
+		#{company}, #{img}, #{info})
 	</insert>
 	
 	<select id="selectAll" resultMap="result">
-		SELECT no, name, category, price, usepeople, company, img, info FROM RENTCAR
+		SELECT no, name, category, price, usepeople, company, img, info FROM RENT_PENSION
 	</select>
 	
 	<select id="selectVo" resultType="com.pgy.rentcar.dto.RentCar_Dto">
-		SELECT no, name, category, price, usepeople, company, img, info FROM RENTCAR
+		SELECT no, name, category, price, usepeople, company, img, info FROM RENT_PENSION
 		WHERE NO = #{no}
 	</select>
 	
 	<select id="selectKey" resultMap="result">
-		SELECT no, name, category, price, usepeople, company, img, info FROM RENTCAR
+		SELECT no, name, category, price, usepeople, company, img, info FROM RENT_PENSION
 		WHERE CATEGORY = #{category}
 	</select>
 	
 	<update id="update">
-		UPDATE RENTCAR SET
+		UPDATE RENT_PENSION SET
 		NAME = #{name},
 		CATEGORY = #{category},
 		PRICE = #{price},
@@ -49,20 +55,21 @@
 	</update>
 	
 	<delete id="delete">
-		DELETE FROM RENTCAR
+		DELETE FROM RENT_PENSION
 		WHERE NO = #{no}
 	</delete>
+	
 	<select id="curraval" resultType="int">
-		SELECT RENTCAR_SEQ.CURRVAL FROM DUAL
+		SELECT RENT_PENSION_SEQ.CURRVAL FROM DUAL
 	</select>
 	
 	<select id="login" resultType="int">
-		SELECT COUNT(*) FROM JSPMEMBER
+		SELECT COUNT(*) FROM P_MEMBER
 		WHERE ID=#{id} AND PASS=#{pass}
 	</select>
 	
 	<select id="allcount" resultType="int">
-		SELECT COUNT(*) FROM RENTCAR
+		SELECT COUNT(*) FROM RENT_PENSION
 	</select>
 	
 </mapper>

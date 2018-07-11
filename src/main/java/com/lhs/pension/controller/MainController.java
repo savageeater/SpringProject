@@ -1,5 +1,6 @@
 package com.lhs.pension.controller;
 
+import java.io.UnsupportedEncodingException;
 import java.text.DateFormat;
 import java.util.Date;
 import java.util.HashMap;
@@ -8,6 +9,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.swing.JOptionPane;
 
 import org.apache.ibatis.session.SqlSession;
 import org.slf4j.Logger;
@@ -18,6 +20,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import com.lhs.pension.dao.PMemberIDao;
+import com.lhs.pension.dao.RentPensionIDao;
+import com.lhs.pension.dto.RentPension;
 
 
 /**
@@ -47,35 +53,32 @@ private SqlSession sqlSession;
 		return "Login";
 	}
 	@RequestMapping("/LoginProc")
-	public String loginProc(HttpServletRequest request, Model model,HttpSession session) {
+	public String loginProc(HttpServletRequest request, Model model,HttpSession session) throws UnsupportedEncodingException {
 		
-	
 		request.setCharacterEncoding("UTF-8");
+		
 		String id = request.getParameter("id");
 		String pass = request.getParameter("pass");
+		
 		try{
-		//RentCarDAO dao = sqlSession.getMapper(RentCarDAO.class);
+			
+		PMemberIDao dao = sqlSession.getMapper(PMemberIDao.class);
 		Map<String,String> map = new HashMap();
 		map.put("id",id);
 		map.put("pass",pass);
-		boolean loginOk = dao.login(map);
-		if(loginOk){
+		
+		int loginOk = dao.login(map);
+		if(loginOk==1){
 			session.setAttribute("id", id);
 			return "Main?center=CarReserveMain.jsp";
 		}else{
-			//alert("회원아이디 혹은 패스워드가 틀립니다.");
-			return "Main.jsp?center=Login.jsp";
-			
+			JOptionPane.showMessageDialog(null,"회원아이디 혹은 패스워드가 틀립니다.");
+			return "Main?center=Login.jsp";
 		}
 		}catch(Exception e){
 			e.printStackTrace();
 		}
-
-		
-		
-		
 		
 		return "LoginProc";
 	}
-	
 }

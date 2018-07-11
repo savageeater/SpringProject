@@ -1,9 +1,8 @@
-package com.lhs.dto;
+package com.lhs.pension.dto;
 
 public class RentPension {
 	private int no;
 	private String name;
-	private int category;
 	private int price;
 	private String img;
 	private String info;
@@ -16,6 +15,7 @@ public class RentPension {
 	private int toilet;
 	private int room;
 	private int breakfast;
+	private int wifi;
 	public int getNo() {
 		return no;
 	}
@@ -28,12 +28,7 @@ public class RentPension {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public int getCategory() {
-		return category;
-	}
-	public void setCategory(int category) {
-		this.category = category;
-	}
+
 	public int getPrice() {
 		return price;
 	}

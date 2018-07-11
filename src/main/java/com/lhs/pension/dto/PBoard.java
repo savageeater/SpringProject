@@ -1,4 +1,4 @@
-package com.lhs.dto;
+package com.lhs.pension.dto;
 
 public class PBoard {
 	private int ref;

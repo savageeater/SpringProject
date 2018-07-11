@@ -4,7 +4,7 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
 
-import com.lhs.dto.PMember;
+import com.lhs.pension.dto.PMember;
 
 
 public interface PMemberIDao {
